@@ -8,7 +8,7 @@ docker service create --replicas 1 --name oodt-filemgr -p 9000:9000 --network sw
                       --mount type=bind,src=$OODT_CONFIG/workflows/test-workflow/policy,dst=/usr/local/oodt/workflows/policy \
                       --mount type=bind,src=$OODT_ARCHIVE,dst=/usr/local/oodt/archive \
                       --mount type=bind,src=$OODT_JOBS,dst=/usr/local/oodt/pges/test-workflow/jobs \
-                      oodthub/oodt-filemgr:latest
+                      acce/oodt-filemgr:1.0
 
 # start RabbitMQ server on swarm manager node
 docker service create --replicas 1 --name oodt-rabbitmq -p 5672:5672 -p 15672:15672 --network swarm-network \
@@ -16,7 +16,7 @@ docker service create --replicas 1 --name oodt-rabbitmq -p 5672:5672 -p 15672:15
                       --mount type=bind,src=$OODT_CONFIG/rabbitmq_clients/test_workflow_driver.py,dst=/usr/local/oodt/rabbitmq/test_workflow_driver.py \
                       --env 'RABBITMQ_USER_URL=amqp://oodt-user:changeit@localhost/%2f' \
                       --env 'RABBITMQ_ADMIN_URL=http://oodt-admin:changeit@localhost:15672' \
-                      oodthub/oodt-rabbitmq                    
+                      acce/oodt-rabbitmq:1.0                    
 
 # start workflow 
 docker service create --replicas 1 --name oodt-wmgr --network swarm-network \
@@ -33,7 +33,7 @@ docker service create --replicas 1 --name oodt-wmgr --network swarm-network \
                       --env 'RABBITMQ_ADMIN_URL=http://oodt-admin:changeit@oodt-rabbitmq:15672' \
                       --env 'WORKFLOW_QUEUE=test-workflow' \
                       --env 'MAX_WORKFLOWS=4' \
-                      oodthub/oodt-wmgr:latest
+                      acce/oodt-wmgr:1.0
 docker service scale oodt-wmgr=2
 
 docker service ls
