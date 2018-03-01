@@ -10,7 +10,7 @@ version: '3.1'
 services:
 
   oodt-filemgr:
-    image: acce/oodt-filemgr:1.0
+    image: acce/oodt-filemgr:${ACCE_VERSION}
     container_name: filemgr
     expose:
       - "9000"
@@ -23,7 +23,7 @@ services:
       - archive:/usr/local/oodt/archive
 
   oodt-wmgr:
-    image: acce/oodt-wmgr-tensorflow:1.0
+    image: acce/oodt-wmgr:${ACCE_VERSION}
     container_name: wmgr
     expose:
       - "9001"
@@ -50,7 +50,7 @@ services:
 
   # RabbitMQ server
   oodt-rabbitmq:
-    image: acce/oodt-rabbitmq:1.0
+    image: acce/oodt-rabbitmq:${ACCE_VERSION}
     container_name: rabbitmq
     expose:
       - "5672"
