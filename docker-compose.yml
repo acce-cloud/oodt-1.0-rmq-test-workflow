@@ -23,7 +23,7 @@ services:
       - archive:/usr/local/oodt/archive
 
   oodt-wmgr:
-    image: acce/oodt-wmgr:1.0
+    image: acce/oodt-wmgr-tensorflow:1.0
     container_name: wmgr
     expose:
       - "9001"
