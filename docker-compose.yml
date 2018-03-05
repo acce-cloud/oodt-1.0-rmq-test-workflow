@@ -17,7 +17,7 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - ./workflows/test-workflow/policy:/usr/local/oodt/workflows/policy
+      - ./workflows/test-workflow/policy:/usr/local/oodt/workflows/test-workflow/policy
       # shared data volumes
       - jobs:/usr/local/oodt/pges/test-workflow/jobs
       - archive:/usr/local/oodt/archive

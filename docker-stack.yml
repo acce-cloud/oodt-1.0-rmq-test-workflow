@@ -20,7 +20,7 @@ services:
       - "9000:9000"
     # shared volumes must be cross-mounted on all nodes
     volumes:
-      - $OODT_CONFIG/workflows/test-workflow/policy:/usr/local/oodt/workflows/policy
+      - $OODT_CONFIG/workflows/test-workflow/policy:/usr/local/oodt/workflows/test-workflow/policy
       - $OODT_ARCHIVE:/usr/local/oodt/archive
       - $OODT_JOBS:/usr/local/oodt/pges/test-workflow/jobs
     deploy:
